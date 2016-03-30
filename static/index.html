@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<!--
+Pagina Inicial:
+TODO: Usar sistema d routing, implementar um sistema de login decente, resto
+-->
+
+<html lang="en-US">
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- AngularJS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    
+    <!-- TODO: login Controller
+    <script src="js/controller/login.js"></script>
+    -->
+<head>
+    <title>HelpPet</title>
+</head>
+<body ng-app="">
+    <div class="container">
+        <h2 class="form-signin-heading">Login</h2>
+        <label for="loginUsuario" class="sr-only">Usuario</label> <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
+        <label for="loginSenha" class="sr-only">Senha</label> <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(usuario)">Login</button>
+    </div> <!-- /container -->
+</body>
+</html> 
