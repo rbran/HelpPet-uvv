@@ -1,0 +1,33 @@
+//Aqui serão listados a base da nossa aplicação web
+
+-- Objetivo --
+  -> Facilitará o contato entre as pessoas que desejam doar, adotar, e instituições que recebem animais.
+  -> Apresentará locais onde foram encontrados animais perdidos, para pessoas ou intituições próximas pegá-los. Onde os próprios
+    usuários colocarão as localizações.
+
+-- Página Inicial --
+
+
+
+-- Cadastro --
+  > Todo doador e donatário, deverá fazer um prévio cadastro contendo:
+    -> Nome: (caixa de texto)
+    -> Endereço: (caixa de texto)
+    -> Email: (caixa de texto)
+    -> Data de nascimento:
+      --> Dia: (pequena caixa de texto)
+      --> Mês: (menu de seleção)
+      --> Ano: (caixa de texto) // +18????
+      --> Telefone, celular: (caixa de texto)
+      --> Renda média: (menu de seleção) // (opcional)
+          ---> Opção 1: Até 1 salário mínimo
+          ---> Opção 2: Até 2 salários mínimos
+          ---> Opção 3: Até 3 salários mínimos
+          ---> Opção 4: Acima de 3 salários mínimos
+    /* A renda média seria opcional, pois alguns doadores podem querer restringir a doação para saber se os donatários possuem condições
+      financeiras para cuidaar de determinada raça. Se o doador selecionar a opção de renda, os donatários deverão atualizar o cadastro*/
+
+
+-- Página de Adoção --
+  > Deverá conter foto do Pet, nome, raça, endereço, pequena descrição sobre vacinas que ele já tomou, e os cuidados que devem ter 
+    com ele.
