@@ -1,4 +1,4 @@
-var app = angular.module('helppet', ['ngRoute', 'angular-storage']);
+var app = angular.module('helppet', ['ngRoute', 'angular-storage', 'angular-jwt']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
@@ -12,33 +12,24 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
+app.config(function Config($httpProvider, jwtInterceptorProvider) {
+    jwtInterceptorProvider.tokenGetter = ['store', function(store) {
+        return store.get('jwt');
+    }];
 
-app.controller("MainController", function($scope, store) {
-        $scope.mainData = {
-            jwt: null
-        };
-        
-        $scope.setJWT = function(jwt) {
-            store.set('jwt', jwt);
-            $scope.mainData.jwt = jwt;
-        };
-        
+    $httpProvider.interceptors.push('jwtInterceptor');
+})
+
+app.controller("MainController", function($scope, $location, store, jwtHelper) {
         $scope.isLoged = function() {
-            if($scope.mainData.jwt == null) {
-                return false;
-            } else {
-                return true;
-            }
+            return store.get('jwt') != null;
         };
         
-        $scope.getJWT = function() {
-            return $scope.mainData.jwt;
-        }
-        $scope.delJWT = function() {
+        var jwt = store.get('jwt');
+        if(store.get('jwt') == null){
+            $location.path('login');
+        }else if(jwtHelper.isTokenExpired(jwt)) {
             store.remove('jwt');
-            $scope.mainData.jwt = null;
+            $location.path('login');
         }
-        
-        
-        $scope.mainData.jwt = store.get('jwt');
-    });
+});

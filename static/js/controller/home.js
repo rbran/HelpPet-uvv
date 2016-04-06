@@ -1,10 +1,10 @@
-app.controller('HomeController', function($scope, $location)  {
+app.controller('HomeController', function($scope, $location, store)  {
         if(!$scope.isLoged()){
             $location.path('login');
         }
         
         $scope.logout = function() {
-            $scope.delJWT();
+            store.remove('jwt');
             $location.path('login');
         }
     });

@@ -19,7 +19,7 @@ app.factory('LoginService', function($http) {
 });
 
 app.controller('LoginController', 
- function($scope, $http, $location, LoginService)  {
+ function($scope, $http, $location, store, LoginService)  {
     $scope.usuario = {};
     
     if($scope.isLoged()){
@@ -32,7 +32,7 @@ app.controller('LoginController',
         
         resposta.then(function(data) {
             if(data.resposta == "sucesso"){
-                $scope.setJWT(data.jwt);
+                store.set('jwt', data.jwt);
                 $location.path('home');
             }else{
                 alert("Erro no login");
