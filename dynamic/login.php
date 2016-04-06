@@ -11,12 +11,10 @@ https://github.com/firebase/php-jwt
 
 use \Firebase\JWT\JWT;
 require_once("vendor/autoload.php");
+require_once("config.php");
 
 header('Content-type: application/json');
 
-//TODO: colocar todos as constantes em um arquivo de configuração
-$nomeServidor = "HelpPet-uvv";
-$JWTkey = "aif4iem2daibaiZ1eer2aebur1"; //TODO: Criar um arquivo de conf e adicionar uma senha descente (binario?)
 $horaAtual = time();
 $token = [
     'iat'  => $horaAtual,                            // Issued at: time when the token was generated
@@ -27,9 +25,9 @@ $token = [
     'data' => null                                   // Data to be signed
 ];
 
-$bancoDados = [0 => array('id' => 1, 'login' => 'usuario0', 'senha' => 'senha0'),
-               1 => ['id' => 2, 'login' => 'usuario1', 'senha' => 'senha1'],
-               2 => ['id' => 3, 'login' => 'admin', 'senha' => 'admin']
+$bancoDados = [['id' => 1, 'login' => 'usuario0', 'senha' => 'senha0'],
+               ['id' => 2, 'login' => 'usuario1', 'senha' => 'senha1'],
+               ['id' => 3, 'login' => 'admin', 'senha' => 'admin']
               ];
 
 $input = @json_decode(utf8_encode(file_get_contents("php://input"))); // converto o input em json; o "@" remove a mensagem de erro (caso existir)
