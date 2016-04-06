@@ -1,3 +1,13 @@
-<button class="btn btn-default btn-sm" type="button" ng-click="logout()">Logout</button>
-     
-BemVindo ao HelpPet
+<button class="btn btn-default btn-sm" type="button" ng-click="logout()">Logout</button><br/>
+<h1>Bem vindo {{dataHome.usuario}}</h1><br/>
+
+ <table style="width:100%" class="table table-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Especie</th>
+  </tr>
+  <tr ng-repeat="pet in dataHome.pets">
+    <td>{{pet.nome}}</td>
+    <td>{{pet.especie}}</td>
+  </tr>
+</table> 
