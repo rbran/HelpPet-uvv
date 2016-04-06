@@ -27,6 +27,11 @@ $token = [
     'data' => null                                   // Data to be signed
 ];
 
+$bancoDados = [0 => array('id' => 1, 'login' => 'usuario0', 'senha' => 'senha0'),
+               1 => ['id' => 2, 'login' => 'usuario1', 'senha' => 'senha1'],
+               2 => ['id' => 3, 'login' => 'admin', 'senha' => 'admin']
+              ];
+
 $input = @json_decode(utf8_encode(file_get_contents("php://input"))); // converto o input em json; o "@" remove a mensagem de erro (caso existir)
 
 if($input == null or !isset($input->login) or !isset($input->senha)){
@@ -36,8 +41,16 @@ if($input == null or !isset($input->login) or !isset($input->senha)){
 
 //JWT::$leeway = 60; // $leeway in seconds // precisa??
 
-if($input->login == 'usuario1' and $input->senha == 'senha1'){ //verifica se o usuario é valido TODO:Criar um sistema de banco de dados
-    $token['data'] = array('usuario' => $input->login); //adiciona o login aos dados que seram assinados pelo jwt
+$usuario = null;
+foreach($bancoDados as $registro) { //verifica se o usuario é valido TODO:Criar um sistema de banco de dados
+    if($registro['login'] === $input->login and $registro['senha'] === $input->senha){
+        $usuario = $registro;
+        break;
+    }
+}
+
+if($usuario != null){
+    $token['data'] = ['usuario' => $registro['login'], 'id' => $registro['id']]; //adiciona o login aos dados que seram assinados pelo jwt
     $jwt = JWT::encode($token, $JWTkey, 'HS256'); //assina os dados do usuario
     echo json_encode(['resposta' => 'sucesso', 'jwt' => $jwt]); //envia a resposta json
     exit;

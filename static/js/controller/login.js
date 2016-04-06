@@ -22,13 +22,18 @@ app.controller('LoginController',
  function($scope, $http, $location, LoginService)  {
     $scope.usuario = {};
     
+    if($scope.isLoged()){
+        $location.path('home');
+    }
+    
     $scope.login = function(usuario) {
         var resposta = LoginService.login($scope.usuario.login, $scope.usuario.senha);
         
+        
         resposta.then(function(data) {
             if(data.resposta == "sucesso"){
-                $scope.storeJWT(data.jwt);
-                $location.path('/');
+                $scope.setJWT(data.jwt);
+                $location.path('home');
             }else{
                 alert("Erro no login");
             }

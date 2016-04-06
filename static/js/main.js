@@ -18,7 +18,7 @@ app.controller("MainController", function($scope, store) {
             jwt: null
         };
         
-        $scope.storeJWT = function(jwt) {
+        $scope.setJWT = function(jwt) {
             store.set('jwt', jwt);
             $scope.mainData.jwt = jwt;
         };
@@ -34,6 +34,11 @@ app.controller("MainController", function($scope, store) {
         $scope.getJWT = function() {
             return $scope.mainData.jwt;
         }
+        $scope.delJWT = function() {
+            store.remove('jwt');
+            $scope.mainData.jwt = null;
+        }
+        
         
         $scope.mainData.jwt = store.get('jwt');
     });
