@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-
-<!--
-Pagina Inicial:
-TODO: Usar sistema d routing, implementar um sistema de login decente, resto
--->
-
-<html lang="en-US">
-    <!-- BootStrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<html lang="pt-BR">
     
-    <!-- AngularJS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    
-    <!-- TODO: login Controller
-    <script src="js/controller/login.js"></script>
+    <!--
+    Pagina Inicial:
+    TODO: Usar sistema d routing, implementar um sistema de login decente, resto
     -->
 <head>
+    <meta charset="utf-8">
+    
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- AngularJS -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+    
+    <!-- Arquivos AngularJS -->
+    <script src="js/main.js"></script>
+    <script src="js/controller/home.js"></script>
+    <script src="js/controller/login.js"></script>
     <title>HelpPet</title>
 </head>
-<body ng-app="">
-    <div class="container">
-        <h2 class="form-signin-heading">Login</h2>
-        <label for="loginUsuario" class="sr-only">Usuario</label> <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
-        <label for="loginSenha" class="sr-only">Senha</label> <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(usuario)">Login</button>
-    </div> <!-- /container -->
+<body ng-app="helppet">
+    <div class="content" ng-controller="MainController">
+        <div ng-view></div>
+    </div>
 </body>
 </html> 
