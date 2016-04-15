@@ -20,7 +20,7 @@ $token = [
     'iat'  => $horaAtual,                            // Issued at: time when the token was generated
     'jti'  => base64_encode(mcrypt_create_iv(32)),   // Json Token Id: an unique identifier for the token
     'iss'  => $nomeServidor,                         // Issuer
-    'nbf'  => $horaAtual + 10,                       // Not before
+    'nbf'  => $horaAtual,                            // Not before
     'exp'  => $horaAtual + (60*60),                  // Expire
     'data' => null                                   // Data to be signed
 ];
