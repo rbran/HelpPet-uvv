@@ -21,10 +21,17 @@
     <script src="js/main.js"></script>
     <script src="js/controller/home.js"></script>
     <script src="js/controller/login.js"></script>
+    <script src="js/controller/cadastra-pet.js"></script>
+    <script src="js/controller/pesquisa-perdidos.js"></script>
+    <script src="js/controller/pesquisa-adocao.js"></script>
+    <script src="js/controller/mantem-dados-usuario.js"></script>
+    <script src="js/controller/cadastra-adocao.js"></script>
+    <script src="js/controller/cadastra-perdido.js"></script>
     <title>HelpPet</title>
 </head>
-<body ng-app="helppet">
-    <div class="content" ng-controller="MainController">
+<body ng-app="helppet" ng-controller="MainController">
+    <div ng-show="isLoged()" ng-include src="'views/includes/barra-superior.html'"></div>
+    <div class="content">
         <div ng-view></div>
     </div>
 </body>

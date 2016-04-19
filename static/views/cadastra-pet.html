@@ -1,0 +1,13 @@
+<form name="cadastra_pet_form" novalidate>
+  Nome: <input type="text" name="nome_pet_form" /> <br />
+  Espécie:
+  <select>
+    <option>Gato</option>
+    <option>Cachorro</option>
+  </select> <br />
+  
+  <a href="#/home">
+    <button type="button" class="btn btn-danger">Cancelar</button>
+  </a>
+  <button type="submit" class="btn btn-primary" ng-disabled="cadastra_pet_form.$invalid">Cadastrar</button>
+</form>

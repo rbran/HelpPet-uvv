@@ -39,9 +39,4 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, m
             alert("Erro ao receber dados do servidor");
         }
     });
-    
-    $scope.logout = function() {
-        store.remove('jwt');
-        $location.path('login');
-    }
 });

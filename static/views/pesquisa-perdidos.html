@@ -1,0 +1,20 @@
+<table style="width:100%" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col-md-6">Nome do Pet</th>
+            <th class="col-md-3">Especie</th>
+            <th class="col-md-1">Usuario</th>
+            <th class="col-md-1"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="pet in dataPesquisaPerdidos.pets">
+            <td>{{pet.nome}}</td>
+            <td>{{pet.especie}}</td>
+            <td>{{pet.dono.nome}}</td>
+            <td>
+                <button type="button" class="btn btn-primary">Ver detalhes</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
