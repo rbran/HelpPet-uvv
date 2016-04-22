@@ -1,13 +1,25 @@
-<form name="cadastra_pet_form" novalidate>
-  Nome: <input type="text" name="nome_pet_form" /> <br />
-  Espécie:
-  <select>
-    <option>Gato</option>
-    <option>Cachorro</option>
-  </select> <br />
-  
-  <a href="#/home">
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="nome" class="col-sm-2 control-label">Nome:</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" id="nome" placeholder="Nome do pet">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="especie" class="col-sm-2 control-label">Espécie:</label>
+    <div class="col-sm-5">
+      <select name="especie" id="especie" class="form-control">
+        <option value="gato">Gato</option>
+        <option value="cachorro">Cachorro</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <a href="#/home">
     <button type="button" class="btn btn-danger">Cancelar</button>
   </a>
   <button type="submit" class="btn btn-primary" ng-disabled="cadastra_pet_form.$invalid">Cadastrar</button>
+    </div>
+  </div>
 </form>
