@@ -1,10 +1,31 @@
-<form name="cadastra_adocao_form" novalidate>
-    Nome: {{dataCadastraAdocao.pet.nome}} <br />
-    Espécie: {{dataCadastraAdocao.pet.especie}} <br />
-    Observações: <textarea rows="4" cols="50"></textarea> <br />
+<form name="cadastra_adocao_form" novalidate class="form-horizontal">
+     <div class="form-group">
+        <label for="inputNome" class="col-sm-2 control-label">Nome:</label>
+        <div class="col-sm-5">
+          {{dataCadastraAdocao.pet.nome}}
+        </div>
+    </div>
     
-    <a href="#/home">
-        <button type="button" class="btn btn-danger">Cancelar</button>
-    </a>
-    <button type="submit" class="btn btn-primary" ng-disabled="cadastra_adocao_form.$invalid">Cadastrar</button>
+    <div class="form-group">
+        <label for="inputNome" class="col-sm-2 control-label">Espécie:</label>
+        <div class="col-sm-5">
+            {{dataCadastraAdocao.pet.especie}}
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="inputNome" class="col-sm-2 control-label">Observações:</label>
+        <div class="col-sm-5">
+          <textarea class="form-control" rows="4" cols="50"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a href="#pesquisa-adocao">
+                <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+            <button type="submit" class="btn btn-primary" ng-disabled="cadastra_adocao_form.$invalid">Cadastrar</button>
+        </div>
+    </div>
 </form>
