@@ -1,10 +1,32 @@
-<form name="mantem_dados_usuario_form" novalidate>
-    Nome: <input type="text"> <br />
-    Email: <input type="text"> <br />
-    Senha: <input type="password"> <br />
+<form name="mantem_dados_usuario_form" novalidate class="form-horizontal">
+    <div class="form-group">
+        <label for="inputNome" class="col-sm-2 control-label">Nome:</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="inputNome">
+        </div>
+    </div>
     
-    <a href="#/home">
+    <div class="form-group">
+        <label for="inputEmail" class="col-sm-2 control-label">Email: </label>
+        <div class="col-sm-5">
+            <input type="email" class="form-control" id="inputEmail"> 
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="inputSenha" class="col-sm-2 control-label">Senha: </label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" id="inputSenha"> 
+        </div>
+    </div>     
+   
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a href="#/home">
         <button type="button" class="btn btn-danger">Cancelar</button>
     </a>
     <button type="submit" class="btn btn-primary" ng-disabled="mantem_dados_usuario_form.$invalid">Salvar</button>
+    </div>
+  </div>
+    
 </form>
