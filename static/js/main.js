@@ -38,27 +38,7 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
     $httpProvider.interceptors.push('jwtInterceptor');
 })
 
-app.factory('LoginService', function($http) {
-    var url = "/dynamic/login.php";
-    
-    var login = function(login, senha) {
-        var enviar = {login: login, senha: senha};
-        
-        return $http.post(url, enviar).then(
-            function sucesso(respostaServidor) {
-                return respostaServidor.data;
-            },
-            function erro(respostaServidor) {
-                return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
-            });
-    }
-    
-    return {
-        login: login
-    };
-});
-
-app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService) {
+app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
     $scope.usuario = {};
     
     $scope.isLoged = function() {
@@ -75,7 +55,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     }
 
     $scope.login = function(usuario) {
-        var resposta = LoginService.login($scope.usuario.login, $scope.usuario.senha);
+        var resposta = LoginService.login(usuario.login, usuario.senha);
             resposta.then(function(data) {
             if(data.resposta == "sucesso"){
                 store.set('jwt', data.jwt);
@@ -93,4 +73,25 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
         store.remove('jwt');
         $location.path('login');
     }
+    
+    var respostaEspecie = especieService.getEspecies();
+    
+    $scope.getNomeEspecie = function(idEspecie) {
+        if(typeof $scope.dataHome.especie != 'undefined'){
+            for (var especie in $scope.dataHome.especie) {
+                if(idEspecie == especie['id']){
+                    return especie['nome'];
+                }
+            }
+        }
+        return 'Erro!';
+    };
+    
+    respostaEspecie.then(function(data) {
+        if(data.resposta == "sucesso") {
+            $scope.dataHome.especie = data.consulta;
+        }else{
+            alert("Erro ao receber dados do servidor");
+        }
+    });
 });

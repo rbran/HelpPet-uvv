@@ -17,17 +17,17 @@ include("verifica_usuario.php");
 
 header('Content-type: application/json');
 
-$bancoDados = [['id' => 1, 'idDono' => '1', 'nome' => 'pet1', 'especie' => 'cachorro', 'perdido' => null, 'adocao' => null],
-               ['id' => 2, 'idDono' => '1', 'nome' => 'pet2', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 3, 'idDono' => '2', 'nome' => 'pet3', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 4, 'idDono' => '2', 'nome' => 'pet4', 'especie' => 'gato', 'perdido' => ['descricao' => 'descrição1234123', 'localizacao' => '-20.341164,-40.313314'], 'adocao' => null],
-               ['id' => 5, 'idDono' => '2', 'nome' => 'pet5', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 6, 'idDono' => '2', 'nome' => 'pet6', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 7, 'idDono' => '3', 'nome' => 'pet7', 'especie' => 'gato', 'perdido' => ['descricao' => 'descrição1234123', 'localizacao' => '-20.341164,-40.313314'], 'adocao' => null],
-               ['id' => 8, 'idDono' => '2', 'nome' => 'pet8', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 9, 'idDono' => '2', 'nome' => 'pet9', 'especie' => 'gato', 'perdido' => null, 'adocao' => ['descricao' => 'descrição1234123']],
-               ['id' => 10, 'idDono' => '2', 'nome' => 'pet10', 'especie' => 'gato', 'perdido' => null, 'adocao' => null],
-               ['id' => 11, 'idDono' => '2', 'nome' => 'pet11', 'especie' => 'gato', 'perdido' => null, 'adocao' => ['descricao' => 'descrição1234123']]
+$bancoDados = [['id' => 1, 'idDono' => 1, 'nome' => 'pet1', 'especie' => 1, 'especieNome' => 'cachorro', 'perdido' => null, 'adocao' => null],
+               ['id' => 2, 'idDono' => 1, 'nome' => 'pet2', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 3, 'idDono' => 2, 'nome' => 'pet3', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 4, 'idDono' => 2, 'nome' => 'pet4', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => ['descricao' => 'descrição1234123', 'localizacao' => '-20.341164,-40.313314'], 'adocao' => null],
+               ['id' => 5, 'idDono' => 2, 'nome' => 'pet5', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 6, 'idDono' => 2, 'nome' => 'pet6', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 7, 'idDono' => 3, 'nome' => 'pet7', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => ['descricao' => 'descrição1234123', 'localizacao' => '-20.347460, -40.330949'], 'adocao' => null],
+               ['id' => 8, 'idDono' => 2, 'nome' => 'pet8', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 9, 'idDono' => 2, 'nome' => 'pet9', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => ['descricao' => 'descrição1234123']],
+               ['id' => 10, 'idDono' => 2, 'nome' => 'pet10', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => null],
+               ['id' => 11, 'idDono' => 2, 'nome' => 'pet11', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => ['descricao' => 'descrição1234123']]
               ];
 
 $input = @json_decode(utf8_encode(file_get_contents("php://input")));

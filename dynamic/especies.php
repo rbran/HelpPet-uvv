@@ -11,16 +11,9 @@ require_once("verifica_usuario.php");
 
 header('Content-type: application/json');
 
-$input = @json_decode(utf8_encode(file_get_contents("php://input")));
-
-if($input == null or !(isset($input->retornaDados) or isset($input->atualizaDados))) {
-    echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro
-    exit;
-}
-
 $bancoDados = [['id' => 1, 'nome' => 'cachorro'],
-               ['id' => 2, 'email' => 'gato'],
-               ['id' => 3, 'email' => 'outros'],
+               ['id' => 2, 'nome' => 'gato'],
+               ['id' => 3, 'nome' => 'outros'],
               ];
 
 $jsonReturn = array('resposta' => 'sucesso');
