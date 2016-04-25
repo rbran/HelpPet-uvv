@@ -34,7 +34,7 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, m
     
     resposta.then(function(data) {
         if(data.resposta == "sucesso"){
-            $scope.dataHome.pets = data.idDono;
+            $scope.dataHome.pets = data.consultarDono;
         }else{
             alert("Erro ao receber dados do servidor");
         }
