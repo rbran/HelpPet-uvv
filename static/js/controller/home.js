@@ -2,7 +2,7 @@ app.factory('manterPets', function($http) {
     var url = "/dynamic/pets.php";
     
     var getPetsPorDono = function(idDono) {
-        var enviar = {idDono: idDono};
+        var enviar = {consultarDono: idDono};
         
         return $http.post(url, enviar).then(
             function sucesso(respostaServidor) {

@@ -1,36 +1,19 @@
 <?php
 /*
-Irá receber o a id do usuario ou id do pet (TODO: adicionar pesquisa por nome, dono, etc...) e ira retornar informações sobre o pet.
+Dados Recebidos do usuario:
+cadastrar: recebe todas informações para cadastrar um pet
+deletar: recebe o id do pet para excluir
+consultar: recebe o id do pet e retorna todas informações
+consultarDono: recebe id do dono e retorna todos os pets desse dono
+pesquisaNome: recebe nome parcial do pet e retorna pets que conferem
 */
 
 use \Firebase\JWT\JWT;
 require_once("vendor/autoload.php");
 require_once("config.php");
+require_once("verifica_usuario.php");
 
 header('Content-type: application/json');
-
-$jwt = sscanf(apache_request_headers()["authorization"], 'Bearer %s')[0];
-if (!$jwt) { //verfifica se o usuario foi autenticado
-    echo json_encode(['resposta' => 'erro', 'mensagem' => 'Usuario não autenticado']); //envia resposta de erro
-    exit;
-}
-$horaAtual = time();
-
-$token = '';
-try{
-    $token = JWT::decode($jwt, $JWTkey, array('HS256'));
-}catch(BeforeValidException $e) {
-    echo json_encode(['resposta' => 'erro', 'mensagem' => 'Autenticação feita no futudo (verifique relógio): ' . $e->getMessage()]); //envia resposta de erro
-    exit;
-}catch(ExpiredException $e) {
-    echo json_encode(['resposta' => 'erro', 'mensagem' => 'Autenticação Expirada: ' . $e->getMessage()]); //envia resposta de erro
-    exit;
-}catch(Exception $e){
-    echo json_encode(['resposta' => 'erro', 'mensagem' => 'Autenticação invalida: ' . $e->getMessage()]); //envia resposta de erro
-    exit;
-}
-
-
 
 $bancoDados = [['id' => 1, 'idDono' => '1', 'nome' => 'pet1', 'especie' => 'cachorro'],
                ['id' => 2, 'idDono' => '1', 'nome' => 'pet2', 'especie' => 'gato'],
@@ -47,22 +30,22 @@ $bancoDados = [['id' => 1, 'idDono' => '1', 'nome' => 'pet1', 'especie' => 'cach
 
 $input = @json_decode(utf8_encode(file_get_contents("php://input")));
 
-if($input == null or !(isset($input->idDono) or isset($input->id))) {
+if($input == null or !(isset($input->consultarDono) or isset($input->consultar))) {
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro
     exit;
 }
 
 $petsPorDono = array();
 
-if(isset($input->idDono)) 
+if(isset($input->consultarDono)) 
     foreach($bancoDados as $registro) 
-        if($input->idDono == $registro['idDono'])
+        if($input->consultarDono == $registro['idDono'])
             $petsPorDono[] = $registro;
     
 $petsPorID = null;
-if(isset($input->id)) {
+if(isset($input->consultar)) {
     foreach($bancoDados as $registro) {
-        if($input->id == $registro['id']) {
+        if($input->consultar == $registro['id']) {
             $petsPorID = $registro;
             break;
         }
