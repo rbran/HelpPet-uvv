@@ -1,9 +1,16 @@
-app.controller('PesquisaAdocaoController', function($scope, $location)  {
+app.controller('PesquisaAdocaoController', function($scope, $location, petsService)  {
     $scope.dataPesquisaAdocao = {};
-    $scope.dataPesquisaAdocao.pets = [
-        {nome: "polenta", especie: "Cachorro", dono: {nome: "usuario1", email: "usuario1@example.com"}, descricao: ""},
-        {nome: "Pet5", especie: "Gato", dono: {nome: "usuario2", email: "usuario2@example.com"}, descricao: ""},
-        {nome: "Pet3", especie: "Cachorro", dono: {nome: "usuario1", email: "usuario1@example.com"}, descricao: ""},
-        {nome: "Pet6", especie: "Gato", dono: {nome: "usuario1", email: "usuario1@example.com"}, descricao: ""},
-    ];
+    $scope.dataPesquisaAdocao.pets = [];
+    
+    
+    
+    var respostaPets = petsService.getPetsAdocao();
+    
+    respostaPets.then(function(data) {
+        if(data.resposta == "sucesso") {
+            $scope.dataPesquisaAdocao.pets = data.consultarAdocao;
+        }else{
+            alert("Erro ao receber dados do servidor");
+        }
+    });
 });

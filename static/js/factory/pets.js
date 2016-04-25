@@ -11,9 +11,36 @@ app.factory('petsService', function($http) {
             function erro(respostaServidor) {
                 return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
             });
-    }
+    };
+    
+    
+    var getPetsPerdidos = function() {
+        var enviar = {consultarPerdido: true};
+        
+        return $http.post(url, enviar).then(
+            function sucesso(respostaServidor) {
+                return respostaServidor.data;
+            },
+            function erro(respostaServidor) {
+                return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
+            });
+    };
+    
+    var getPetsAdocao = function() {
+        var enviar = {consultarAdocao: true};
+        
+        return $http.post(url, enviar).then(
+            function sucesso(respostaServidor) {
+                return respostaServidor.data;
+            },
+            function erro(respostaServidor) {
+                return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
+            });
+    };
     
     return {
-        getPetsPorDono: getPetsPorDono
+        getPetsPorDono: getPetsPorDono,
+        getPetsPerdidos: getPetsPerdidos,
+        getPetsAdocao: getPetsAdocao
     };
 });

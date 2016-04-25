@@ -5,6 +5,8 @@ cadastrar: recebe todas informações para cadastrar um pet (nome, idEspecie, id
 atualiza: igual ao cadastra mas recebe o idPet, retorna true ou false (valores omitidos não são alterados, obrigatório id e qualquer outro)
 deletar: recebe o idPet para excluir
 consultar: recebe o idPet e retorna todas informações
+consultarPerdido: recebe qualquer valor (true recomendado), envia todos pets perdidos
+consultarAdocao: recebe qualquer valor (true recomendado), envia todos pets para adocao
 consultarDono: recebe idDono e retorna todos os pets desse dono
 pesquisaNome: recebe nome parcial do pet e retorna pets que conferem
 pesquisaPerdidoLocalizacao: recebe pets perdidos proximos, recebe qualquer valor (true recomendado)
@@ -83,6 +85,22 @@ if(isset($input->consultar)) {
         if($registro['id'] == $input->consultar){
             $jsonReturn['consultar'] = $registro;
             break;
+        }
+    }
+}
+
+if(isset($input->consultarPerdido)) {
+    foreach($bancoDados as $registro){
+        if($registro['perdido'] !== null){
+            $jsonReturn['consultarPerdido'][] = $registro;
+        }
+    }
+}
+
+if(isset($input->consultarAdocao)) {
+    foreach($bancoDados as $registro){
+        if($registro['adocao'] !== null){
+            $jsonReturn['consultarAdocao'][] = $registro;
         }
     }
 }

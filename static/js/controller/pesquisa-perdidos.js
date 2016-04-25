@@ -1,8 +1,15 @@
-app.controller('PesquisaPerdidosController', function($scope, $location)  {
+app.controller('PesquisaPerdidosController', function($scope, $location, petsService)  {
     $scope.dataPesquisaPerdidos = {};
-    $scope.dataPesquisaPerdidos.pets = [
-        {nome: "polenta", especie: "Cachorro", dono: {nome: "usuario1", email: "usuario1@example.com"}, ultimaLocalizacao: "-20.3387652,-40.3355198", descricao: ""},
-        {nome: "Pet1", especie: "Gato", dono: {nome: "usuario2", email: "usuario2@example.com"}, ultimaLocalizacao: "-20.3387652,-40.3355198", descricao: ""},
-        {nome: "Pet2", especie: "Gato", dono: {nome: "usuario1", email: "usuario1@example.com"}, ultimaLocalizacao: "-20.3387652,-40.3355198", descricao: ""},
-    ];
+    $scope.dataPesquisaPerdidos.pets = [];
+    
+    var respostaPets = petsService.getPetsPerdidos();
+    
+    respostaPets.then(function(data) {
+        if(data.resposta == "sucesso") {
+            $scope.dataPesquisaPerdidos.pets = data.consultarPerdido;
+        }else{
+            alert("Erro ao receber dados do servidor");
+        }
+    });
+    
 });
