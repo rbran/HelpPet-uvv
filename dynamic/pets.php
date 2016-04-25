@@ -1,7 +1,8 @@
 <?php
 /*
-Dados Recebidos do usuario:
-cadastrar: recebe todas informações para cadastrar um pet
+#Dados Recebidos do usuario:
+cadastrar: recebe todas informações para cadastrar um pet (nome, especie_id, usuario_id(pode omitir))
+atualiza: igual ao cadastra mas recebe o id do pet
 deletar: recebe o id do pet para excluir
 consultar: recebe o id do pet e retorna todas informações
 consultarDono: recebe id do dono e retorna todos os pets desse dono
