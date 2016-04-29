@@ -7,7 +7,7 @@ consulta: retorna Todas especies
 use \Firebase\JWT\JWT;
 require_once("vendor/autoload.php");
 require_once("config.php");
-require_once("verifica_usuario.php");
+//require_once("verifica_usuario.php"); //usuarios não logados podem receber a lista de espécies
 
 header('Content-type: application/json');
 
