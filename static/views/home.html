@@ -14,13 +14,13 @@
             <td>{{pet.nome}}</td>
             <td>{{pet.especieNome}}</td>
             <td>
-                <a href="#/cadastra-adocao?id={{pet.id}}">
-                    <button type="button" ng-click="cadastraPet($index)" class="btn btn-primary">Adoção</button>
+                <a href="#/cadastra-adocao?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-primary" ng-class="{disabled: pet.adocao}">
+                    Adoção
                 </a>
             </td>
             <td>
-                <a href="#/cadastra-perdido?id={{pet.id}}">
-                    <button type="button" ng-click="cadastraPet($index)" class="btn btn-danger">Perdido!</button>
+                <a href="#/cadastra-perdido?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-danger" ng-class="{disabled: pet.perdido}">
+                    Perdido!
                 </a>
             </td>
         </tr>
