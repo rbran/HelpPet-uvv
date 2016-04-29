@@ -1,5 +1,5 @@
 app.controller('CadastraPetController', function($scope, $location, petsService)  {
-    $scope.dataCadastraPet = {pet: {especie: String($scope.dataHome.especies[0].id)}};
+    $scope.dataCadastraPet = {pet: {especie: '1'}};
     
     $scope.cadastraPet = function() {
         var respostaCadastraPet = petsService.cadastraPet($scope.dataCadastraPet.pet);

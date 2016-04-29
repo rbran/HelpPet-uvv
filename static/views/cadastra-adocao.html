@@ -1,4 +1,4 @@
-<form name="cadastra_adocao_form" novalidate class="form-horizontal">
+<form name="cadastra_adocao_form" novalidate class="form-horizontal" ng-submit="cadastraAdocao()">
      <div class="form-group">
         <label for="inputNome" class="col-sm-2 control-label">Nome:</label>
         <div class="col-sm-5">
@@ -16,13 +16,13 @@
     <div class="form-group">
         <label for="inputNome" class="col-sm-2 control-label">Observações:</label>
         <div class="col-sm-5">
-          <textarea class="form-control" rows="4" cols="50"></textarea>
+          <textarea class="form-control" rows="4" cols="50" ng-model="dataCadastraAdocao.pet.adocao.obs"></textarea>
         </div>
     </div>
     
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <a href="#pesquisa-adocao">
+            <a href="#/">
                 <button type="button" class="btn btn-danger">Cancelar</button>
             </a>
             <button type="submit" class="btn btn-primary" ng-disabled="cadastra_adocao_form.$invalid">Cadastrar</button>

@@ -40,7 +40,7 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
 
 app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
     $scope.usuario = {};
-    $scope.dataHome = {};
+    $scope.dataMain = {especies: null};
     
     $scope.isLoged = function() {
         return store.get('jwt') != null;
@@ -76,21 +76,9 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     }
     
     var respostaEspecie = especieService.getEspecies();
-    
-    $scope.getNomeEspecie = function(idEspecie) {
-        if(typeof $scope.dataHome.especie != 'undefined'){
-            for (var especie in $scope.dataHome.especie) {
-                if(idEspecie == especie['id']){
-                    return especie['nome'];
-                }
-            }
-        }
-        return 'Erro!';
-    };
-    
     respostaEspecie.then(function(data) {
         if(data.resposta == "sucesso") {
-            $scope.dataHome.especies = data.consulta;
+            $scope.dataMain.especies = data.consulta;
         }else{
             alert("Erro ao receber dados do servidor");
         }

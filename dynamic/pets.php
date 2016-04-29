@@ -53,7 +53,7 @@ if(isset($input->cadastrar)) {
 }
 
 if(isset($input->atualiza)) {
-    if(!isset($input->atualiza->idPet) or 
+    if(!isset($input->atualiza->id) or 
         (!isset($input->atualiza->nome) and
         !isset($input->atualiza->idEspecie) and
         !isset($input->atualiza->idUsuario) and
