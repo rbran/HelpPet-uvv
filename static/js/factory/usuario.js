@@ -1,8 +1,8 @@
 app.factory('usuarioService', function($http) {
-    var url = "/dynamic/pets.php";
+    var url = "/dynamic/usuario.php";
     
-    var getPetsPorDono = function(idDono) {
-        var enviar = {consultarDono: idDono};
+    var getDados = function() {
+        var enviar = {retornaDados: true};
         
         return $http.post(url, enviar).then(
             function sucesso(respostaServidor) {
@@ -11,9 +11,22 @@ app.factory('usuarioService', function($http) {
             function erro(respostaServidor) {
                 return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
             });
-    }
+    };
+    
+    var atualizaDados = function(dadosUsuario) {
+        var enviar = {atualizaDados: dadosUsuario};
+        
+        return $http.post(url, enviar).then(
+            function sucesso(respostaServidor) {
+                return respostaServidor.data;
+            },
+            function erro(respostaServidor) {
+                return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
+            });
+    };
     
     return {
-        getPetsPorDono: getPetsPorDono
+        getDados: getDados,
+        atualizaDados: atualizaDados
     };
 });

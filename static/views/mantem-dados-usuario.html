@@ -1,24 +1,31 @@
-<form name="mantem_dados_usuario_form" novalidate class="form-horizontal">
+<form name="mantem_dados_usuario_form" novalidate ng-submit="atualizaDadosUsuario()" class="form-horizontal">
     <div class="form-group">
         <label for="inputNome" class="col-sm-2 control-label">Nome:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputNome">
+          <input type="text" class="form-control" id="inputNome" ng-model="dataMantemDadosUsuario.dados.nome">
         </div>
     </div>
     
     <div class="form-group">
         <label for="inputEmail" class="col-sm-2 control-label">Email: </label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" id="inputEmail"> 
+            <input type="email" class="form-control" id="inputEmail" ng-model="dataMantemDadosUsuario.dados.email"> 
         </div>
     </div>
     
     <div class="form-group">
         <label for="inputSenha" class="col-sm-2 control-label">Senha: </label>
         <div class="col-sm-5">
-            <input type="password" class="form-control" id="inputSenha"> 
+            <input type="password" class="form-control" id="inputSenha" ng-model="dataMantemDadosUsuario.dados.senha"> 
         </div>
-    </div>     
+    </div>
+    
+    <div class="form-group">
+        <label for="inputLocalizacao" class="col-sm-2 control-label">Localização: </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="inputLocalizacao" ng-model="dataMantemDadosUsuario.dados.localizacao"> 
+        </div>
+    </div>
    
     <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
