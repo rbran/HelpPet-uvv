@@ -40,6 +40,7 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
 
 app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
     $scope.usuario = {};
+    $scope.dataHome = {};
     
     $scope.isLoged = function() {
         return store.get('jwt') != null;
@@ -89,7 +90,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     
     respostaEspecie.then(function(data) {
         if(data.resposta == "sucesso") {
-            $scope.dataHome.especie = data.consulta;
+            $scope.dataHome.especies = data.consulta;
         }else{
             alert("Erro ao receber dados do servidor");
         }
