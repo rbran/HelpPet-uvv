@@ -1,13 +1,40 @@
-<button class="btn btn-default btn-sm" type="button" ng-click="logout()">Logout</button><br/>
-<h1>Bem vindo {{dataHome.usuario}}</h1><br/>
-
- <table style="width:100%" class="table table-striped">
-  <tr>
-    <th>Nome</th>
-    <th>Especie</th>
-  </tr>
-  <tr ng-repeat="pet in dataHome.pets">
-    <td>{{pet.nome}}</td>
-    <td>{{pet.especie}}</td>
-  </tr>
-</table> 
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<link href="menuSuperior.css" rel="stylesheet">
+		
+		<script language = "javascript" src = "scriptMenuSuperior.js">	</script>
+	
+	</head>
+	<body>
+	<font face = "Arial">
+		<p align = right> <button class="btn btn-default btn-sm" type="button" ng-click="logout()">Logout</button><br/> </p>
+		<h1>Bem vindo {{dataHome.usuario}}</h1><br/>
+		
+		<ul>
+			<li> <a href = "home.html" class = "ativo"> Início </a> </li>
+			<li> <a href = "#perfil"> Perfil </a> </li>
+			<li class = "cascata">
+				<a href = "javascript:void(0)" class = "drop" onclick = "menuCascata()"> Pets </a>
+					<div class = "conteudo-cascata" id = "menuCascata">
+						<a href = "#"> Gatos </a>
+						<a href = "#"> Cachorros </a>
+						<a href = "#"> Outros </a>
+					</div>
+			</li>
+		</ul>	
+		<p>
+		 <table style="width:100%" class="table table-striped">
+		  <tr>
+			<th>Nome</th>
+			<th>Especie</th>
+		  </tr>
+		  <tr ng-repeat="pet in dataHome.pets">
+			<td>{{pet.nome}}</td>
+			<td>{{pet.especie}}</td>
+		  </tr>
+		</table>
+	</font>
+	</body>
+</html>
