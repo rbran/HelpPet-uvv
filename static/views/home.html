@@ -1,17 +1,15 @@
 <html>
-	<head>
-		<meta charset="UTF-8">
+<head>
+<meta charset="UTF-8">
 		
-		<link href="menuSuperior.css" rel="stylesheet">
+	<link href="menuSuperior.css" rel="stylesheet">
 		
-		<script language = "javascript" src = "scriptMenuSuperior.js">	</script>
-	
-	</head>
+	<script language = "javascript" src = "scriptMenuSuperior.js">	</script>
+</head>
 	<body>
-	<font face = "Arial">
-		<p align = right> <button class="btn btn-default btn-sm" type="button" ng-click="logout()">Logout</button><br/> </p>
-		<h1>Bem vindo {{dataHome.usuario}}</h1><br/>
-		
+		<font face = "Arial">
+		<h1>Bem vindo {{dataHome.usuario}}</h1> <br/>
+		<!-- barra menu superior -->
 		<ul>
 			<li> <a href = "home.html" class = "ativo"> Início </a> </li>
 			<li> <a href = "#perfil"> Perfil </a> </li>
@@ -23,18 +21,37 @@
 						<a href = "#"> Outros </a>
 					</div>
 			</li>
-		</ul>	
+		</ul>
+		 
+		 <!-- fim barra menu superior -->
+		 
 		<p>
-		 <table style="width:100%" class="table table-striped">
-		  <tr>
-			<th>Nome</th>
-			<th>Especie</th>
-		  </tr>
-		  <tr ng-repeat="pet in dataHome.pets">
-			<td>{{pet.nome}}</td>
-			<td>{{pet.especie}}</td>
-		  </tr>
+		<table style="width:100%" class="table table-striped">
+			<thead>
+				<tr>
+					<th class="col-md-6">Nome do Pet</th>
+					<th class="col-md-3">Especie</th>
+					<th class="col-md-1">Cadastrar para Adoção</th>
+					<th class="col-md-1">Reportar como Perdido</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="pet in dataHome.pets">
+					<td>{{pet.nome}}</td>
+					<td>{{pet.especieNome}}</td>
+					<td>
+						<a href="#/cadastra-adocao?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-primary" ng-class="{disabled: pet.adocao}">
+							Adoção
+						</a>
+					</td>
+					<td>
+						<a href="#/cadastra-perdido?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-danger" ng-class="{disabled: pet.perdido}">
+							Perdido!
+						</a>
+					</td>
+				</tr>
+			</tbody>
 		</table>
-	</font>
+		</font>
 	</body>
 </html>
