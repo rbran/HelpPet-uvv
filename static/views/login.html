@@ -1,8 +1,55 @@
-<div class="container">
-    <h2 class="form-signin-heading">Login</h2>
+<style>
+  #login-box{ background-color:;
+               width:540px;
+			   height:360px;
+			   margin:140px auto 0px;
+			   border-radius:5px;}
+			   
+   #login-box-interno{ background-color:#87CEEB;
+                       width:440px;
+					   height:280px;
+					   position:absolute;
+					   margin:10px;
+					   border-radius:5px;
+					   box-shadow:0px 0px 5px black;
+					   overflow:hidden;}
+					   
+	#login-box-label{height:45px;
+                  text-align:center;
+					font:bold 14px/45px sans-serif;
+					border-top-left-radius:5px;
+					border-top-right-radius:5px;
+					background-color:#87CEEB;
+					border-bottom:1px solid;
+	        border-bottom: 1px solid #bfc3c5;
+	}
+					   
+	.form-control{ margin:18px;
+	               padding:5px;
+				         background-color:;
+				        }
+					   
+  .form-control{ width:375px;
+	               height:40px;
+						     padding-left:5px;
+						     font:normal 13px sans-serif;
+						     color:#aeaeae;
+					       border:1px solid #bfc4c6;
+						     outline:none;}
+						    
+  .btn-primário {;
+	               background-color:#337AB7;
+								 padding:5px;}
+  
+  </style>
+  <div id="login-box">
+  <div id="login-box-interno">
+  <div id="login-box-label"> <h2>HelpPet Login</h2></div>
+  <div class="container">
     <label for="loginUsuario" class="sr-only">Usuario</label>
     <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
     <label for="loginSenha" class="sr-only">Senha</label>
-    <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(usuario)">Login</button>
-</div> <!-- /container -->
+    <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">&nbsp&nbsp&nbsp&nbsp
+    <input type="checkbox" name="newsletter" value="1"> <b>Lembra Senha</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button class="btn btn-primário" type="submit" ng-click="login(usuario)"><b>Entrar</b></button><br></br>
+  </div> <!-- /container -->
