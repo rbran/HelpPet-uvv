@@ -1,13 +1,13 @@
 <style>
   #login-box{ background-color:;
-               width:540px;
-			   height:360px;
+               width:550px;
+			   height:370px;
 			   margin:140px auto 0px;
 			   border-radius:5px;}
 			   
    #login-box-interno{ background-color:#87CEEB;
-                       width:440px;
-					   height:280px;
+                       width:450px;
+					   height:290px;
 					   position:absolute;
 					   margin:10px;
 					   border-radius:5px;
@@ -24,22 +24,25 @@
 	        border-bottom: 1px solid #bfc3c5;
 	}
 					   
-	.form-control{ margin:18px;
+  .form-control{ margin:20px;
+                   height:40px;
 	               padding:5px;
-				         background-color:;
+				   background-color:;
 				        }
 					   
   .form-control{ width:375px;
-	               height:40px;
-						     padding-left:5px;
-						     font:normal 13px sans-serif;
-						     color:#aeaeae;
-					       border:1px solid #bfc4c6;
-						     outline:none;}
+	             height:40px;
+				 padding-left:5px;
+				 font:normal 13px sans-serif;
+				 color:#aeaeae;
+			     border:1px solid #bfc4c6;
+				 outline:none;}
 						    
-  .btn-primário {;
+  .btn-primário {  width:375px;
+                   margin:20px;
+                   height:40px;
 	               background-color:#337AB7;
-								 padding:5px;}
+				   padding:5px;}
   
   </style>
   <div id="login-box">
@@ -49,7 +52,6 @@
     <label for="loginUsuario" class="sr-only">Usuario</label>
     <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
     <label for="loginSenha" class="sr-only">Senha</label>
-    <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">&nbsp&nbsp&nbsp&nbsp
-    <input type="checkbox" name="newsletter" value="1"> <b>Lembra Senha</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">
     <button class="btn btn-primário" type="submit" ng-click="login(usuario)"><b>Entrar</b></button><br></br>
   </div> <!-- /container -->
