@@ -1,44 +1,46 @@
 <style>
 
   #login-box{ width:550px;
-			  height:370px;
-			  margin:140px auto 0px;
-			  border-radius:5px;}
+			        height:370px;
+			        margin:140px auto 0px;
+			        border-radius:5px;}
 			   
   #login-box-interno{ background-color:#87CEEB;
-                       width:450px;
-					   height:290px;
-					   position:absolute;
-					   margin:10px;
-					   border-radius:5px;
-					   box-shadow:0px 0px 5px black;
-					   overflow:hidden;}
+                      width:450px;
+					            height:290px;
+					            position:absolute;
+					            margin:10px;
+					            border-radius:5px;
+					            box-shadow:0px 0px 5px black;
+					            overflow:hidden;}
 					   
   #login-box-label{ height:45px;
                     text-align:center;
-					font:bold 14px/45px sans-serif;
-					border-top-left-radius:5px;
-					border-top-right-radius:5px;
-					background-color:#87CEEB;}
+					          font:bold 14px/45px sans-serif;
+					          border-top-left-radius:5px;
+					          border-top-right-radius:5px;
+					          background-color:#87CEEB;}
 					   
   .form-control{ margin:20px;
                  height:40px;}
 					   
   .form-control{ width:375px;
-	             height:40px;
-				 font:normal 13px sans-serif;
-				 color:#aeaeae;
-				 outline:none;}
+	               height:40px;
+				         font:normal 13px sans-serif;
+				         color:#aeaeae;
+				         outline:none;}
 						    
   .btn-primário { width:375px;
                   margin:20px;
                   height:40px;
-	              background-color:#337AB7;}
+	                background-color:#337AB7;}
   
   </style>
+  
   <div id="login-box">
   <div id="login-box-interno">
   <div id="login-box-label"> <h2>HelpPet Login</h2></div>
+  
   <div class="container">
     <label for="loginUsuario" class="sr-only">Usuario</label>
     <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
