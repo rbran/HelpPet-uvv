@@ -1,4 +1,4 @@
-var app = angular.module('helppet', ['ngRoute', 'angular-storage', 'angular-jwt']);
+var app = angular.module('helppet', ['ngRoute', 'angular-storage', 'angular-jwt', 'ngMap']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {

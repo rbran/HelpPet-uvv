@@ -23,7 +23,9 @@
     <div class="form-group">
         <label for="inputLocalizacao" class="col-sm-2 control-label">Localização: </label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputLocalizacao" ng-model="dataMantemDadosUsuario.dados.localizacao"> 
+            <div ng-map zoom="11" center='current-position'> 
+                <marker position="current" title="Escolha a posição" draggable="true" centered="true"></marker>
+            </div>
         </div>
     </div>
    
