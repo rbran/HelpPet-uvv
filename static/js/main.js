@@ -75,8 +75,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
         $location.path('login');
     }
     
-    var respostaEspecie = especieService.getEspecies();
-    respostaEspecie.then(function(data) {
+    especieService.getEspecies().then(function(data) {
         if(data.resposta == "sucesso") {
             $scope.dataMain.especies = data.consulta;
         }else{
