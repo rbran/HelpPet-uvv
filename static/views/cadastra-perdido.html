@@ -23,7 +23,9 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Ultima Localização:</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputEmail" ng-model="dataCadastraPerdido.pet.perdido.localizacao" />
+            <div ng-map zoom="11" center='current-position'> 
+                <marker position="current" title="Escolha a posição" draggable="true" centered="true"></marker>
+            </div>
         </div>    
     </div>
 
