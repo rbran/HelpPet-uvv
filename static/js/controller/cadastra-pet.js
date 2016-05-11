@@ -7,6 +7,8 @@ app.controller('CadastraPetController', function($scope, $location, petsService)
         respostaCadastraPet.then(function(data) {
             if(data.resposta != "sucesso") {
                 alert("Erro ao receber dados do servidor");
+            }else{
+                $location.path('/home');
             }
         });
     };

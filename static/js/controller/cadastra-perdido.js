@@ -22,7 +22,7 @@ app.controller('CadastraPerdidoController', function($scope, $location, $routePa
         $scope.dataCadastraPerdido.pet.perdido.localizacao = {latitude: $scope.map.markers[0].position.lat(), longitude: $scope.map.markers[0].position.lng()};
         petsService.atualizaPet($scope.dataCadastraPerdido.pet).then(function(data) {
             if(data.resposta == "sucesso") {
-                $location.url('/');
+                $location.path('/home');
             }else{
                 alert("Erro ao receber dados do servidor");
             }

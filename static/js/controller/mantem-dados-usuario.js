@@ -9,6 +9,7 @@ app.controller('MantemDadosUsuarioController', function($scope, $location, NgMap
     usuarioService.getDados().then(function(data) {
         if(data.resposta == "sucesso") {
             $scope.dataMantemDadosUsuario.dados = data.usuario;
+            $location.path('/home');
         }else{
             alert("Erro ao receber dados do servidor");
         }
