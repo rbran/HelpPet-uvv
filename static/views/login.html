@@ -1,9 +1,123 @@
-<div class="container col-sm-offset-3 col-sm-6"><br>
-    <img src="../multimidia/logo-helpet-sem-texto.svg" alt="HelpPet" width="120" height="120" class="col-sm-offset-5"/>
-    <h2 class="form-signin-heading" align="center">Login</h2>
-    <label for="loginUsuario" class="sr-only">Usuario</label>
-    <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login"><br>
-    <label for="loginSenha" class="sr-only">Senha</label>
-    <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha"><br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(usuario)">Entrar</button>
-</div> <!-- /container -->
+<style>
+
+  #login-box {
+    width: 550px;
+    height: 370px;
+    margin: 140px auto 0px;
+    border-radius: 5px;
+  }
+  
+  #login-box-interno {
+    background-color:#FFFFFF;
+    width: 450px;
+    height: 290px;
+    position: absolute;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    overflow: hidden;
+  }
+  
+  #login-box-label {
+    height: 45px;
+    text-align: center;
+    font: bold 14px/45px sans-serif;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #FFFFFF;
+  }
+  
+  .form-control {
+    margin: 20px;
+    height: 40px;
+  }
+  
+  .form-control {
+    width: 375px;
+    height: 40px;
+    font: normal 13px sans-serif;
+    color: #aeaeae;
+    outline: none;
+  }
+  
+  .btn-primário {
+    width: 375px;
+    margin: 20px;
+    height: 40px;
+    background-color:#00BFFF;
+  }
+  
+  .logo{
+      left: 33%;
+      top: 2%;
+      position: absolute;
+  }
+  
+        .logo1{
+            float: left;
+            margin-top: 3px;
+            margin-left: 15px;
+            position: absolute;
+            
+        }
+        
+        ul{
+        	list-style-type: none;
+        	margin: 0;
+        	padding: 0;
+        	overflow: hidden;
+        	background-color: #F8F8F8;
+        	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
+        }
+        
+        li a{
+        	float: right;
+        	color: #777777;
+        	text-align: center;
+        	padding: 14px 16px;
+        	text-decoration: none;
+        }
+        
+        .divlogo{
+            position: absolute;
+        }
+        
+        .divmenu{
+            position: relative;
+        }
+        
+        body{
+          background: url("/multimidia/fundo.png");
+        }
+ 
+</style>
+
+<body>
+
+<font face = "Arial">
+    <div class = "div.menu">
+        <div class = "div.logo">
+             <img class = "logo1" alt = "Logomarca" src = "/multimidia/logo-helpet-texto-direito.png" height = 42px />
+        </div>
+      <ul>
+    		<li> <a href = "/static/views/includes/inicio.html"> Voltar </a> </li>
+    	</ul>
+    </div>
+</font>
+
+<div id="login-box">
+  <div id="login-box-interno">
+    <div id="login-box-label">
+    <img class = "logo" src = "/multimidia/logo-helpet-texto-direito.png" height = 50px />
+    </div> <!-- /login-box-label -->
+    <div class="container">
+      <label for="loginUsuario" class="sr-only">Usuario</label>
+      <input type="text" name="loginUsuario" class="form-control" placeholder="Login" required autofocus ng-model="usuario.login">
+      <label for="loginSenha" class="sr-only">Senha</label>
+      <input type="password" name="inputSenha" class="form-control" placeholder="Senha" required ng-model="usuario.senha">
+      <button class="btn btn-primário" type="submit" ng-click="login(usuario)"><b>Entra</b></button>
+      <br><br>
+    </div> <!-- /container -->
+  </div> <!-- /login-box-interno -->
+</div> <!-- /login-box -->
+</body>
