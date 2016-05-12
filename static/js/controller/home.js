@@ -10,6 +10,11 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, p
         petCadastroService.set($scope.dataHome.pets[petIndex]);
     };
     
+    $scope.deletaPet = function(index) {
+        $scope.dataHome.pets.splice(index, 1);
+        petsService.deletaPet($scope.dataHome.pets[index].id);
+    };
+    
     var jwt = jwtHelper.decodeToken(store.get('jwt'));
     
     $scope.dataHome.usuario = jwt.data.usuario;

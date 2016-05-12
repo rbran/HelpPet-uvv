@@ -74,13 +74,26 @@ app.factory('petsService', function($http) {
             });
     };
     
+    var deletaPet = function(id) {
+        var enviar = {deleta: id};
+        
+        return $http.post(url, enviar).then(
+            function sucesso(respostaServidor) {
+                return respostaServidor.data;
+            },
+            function erro(respostaServidor) {
+                return {resposta:"erro", mensagem: "Erro ao se comunicar com a servidor"};
+            });
+    };
+    
     return {
         getPet: getPet,
         getPetsPorDono: getPetsPorDono,
         getPetsPerdidos: getPetsPerdidos,
         getPetsAdocao: getPetsAdocao,
         cadastraPet: cadastraPet,
-        atualizaPet: atualizaPet
+        atualizaPet: atualizaPet,
+        deletaPet: deletaPet
     };
 });
 
