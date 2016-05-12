@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 DROP TABLE IF EXISTS `Animal` ;
 
 CREATE TABLE IF NOT EXISTS `Animal` (
-  `id` INTEGER AUTOINCREMENT NOT NULL,
+  `id` INTEGER NOT NULL,
   `nome` CHAR(45) NULL,
   `especie_id` INTEGER NULL,
   `usuario_id` INTEGER NOT NULL,
@@ -51,18 +51,17 @@ CREATE TABLE IF NOT EXISTS `Animal` (
 -- -----------------------------------------------------
 -- Table `AnimalPerdido`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AnimalPerdido` ;
+DROP TABLE IF EXISTS `Perdido` ;
 
-CREATE TABLE IF NOT EXISTS `AnimalPerdido` (
+CREATE TABLE IF NOT EXISTS `Perdido` (
   `animal_id` INTEGER NOT NULL,
   `ultimaLocalizacao` CHAR(45) NULL,
-  `observação` CHAR(512) NULL,
-  PRIMARY KEY (`animal_id`),
+  `observacao` CHAR(512) NULL,
   FOREIGN KEY(`animal_id`) REFERENCES `Animal`(`id`) ON DELETE CASCADE
 );
 
 -- Exemplo
--- INSERT INTO `AnimalPerdido` (`animal_id`,`ultimaLocalizacao`,`observação`) VALUES (1, '-20.341164,-40.313314', 'Pet foi perdido durante passeio');
+-- INSERT INTO `Perdido` (`animal_id`,`ultimaLocalizacao`,`observacao`) VALUES (1, '-20.341164,-40.313314', 'Pet foi perdido durante passeio');
 
 -- -----------------------------------------------------
 -- Table `Adocao`
@@ -71,11 +70,10 @@ DROP TABLE IF EXISTS `Adocao` ;
 
 CREATE TABLE IF NOT EXISTS `Adocao` (
   `animal_id` INTEGER NOT NULL,
-  `observacoes` CHAR(512) NULL,
-  PRIMARY KEY (`animal_id`),
+  `observacao` CHAR(512) NULL,
   FOREIGN KEY(`animal_id`) REFERENCES `Animal`(`id`) ON DELETE CASCADE
 );
 
 -- Exemplo
--- INSERT INTO `AnimalPerdido` (`animal_id`,`observação`) VALUES (1, 'Pet foi abandonado');
+-- INSERT INTO `Adocao` (`animal_id`,`observacao`) VALUES (1, 'Pet foi abandonado');
 
