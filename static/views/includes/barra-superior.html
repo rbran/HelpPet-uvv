@@ -1,21 +1,26 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
     	<div class="navbar-header">
-    	    <a class="navbar-brand" href="#/home">
-    	        <img src="../multimidia/logo-helpet-sem-texto.svg" alt="HelpPet" width="30" height="30" />
+    	    <a ng-if="usuario" class="navbar-brand" href="#/home">
+    	       <img src="../multimidia/logo-helpet-sem-texto.svg" alt="HelpPet" width="30" height="30" />
+            </a>
+    	    <a ng-if="!usuario" class="navbar-brand" href="#/">
+    	       <img src="../multimidia/logo-helpet-sem-texto.svg" alt="HelpPet" width="30" height="30" />
             </a>
         </div> <!-- /.navbar-header -->
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         	<ul class="nav navbar-nav navbar-left">
-                <li ng-class="{ active: telaAtiva('/cadastra-pet')}"><a href="#/cadastra-pet">Cadastra novo Pet</a></li>
-                <li ng-class="{ active: telaAtiva('/pesquisa-perdidos')}"><a href="#/pesquisa-perdidos">Ver Pets Perdidos</a></li>
-                <li ng-class="{ active: telaAtiva('/pesquisa-adocao')}"><a href="#/pesquisa-adocao">Ver Pets Para Adoção</a></li>
+                <li ng-if="usuario" ng-class="{ active: telaAtiva('/cadastra-pet')}"><a href="#/cadastra-pet">Cadastra novo Pet</a></li>
+                <li ng-if="usuario" ng-class="{ active: telaAtiva('/pesquisa-perdidos')}"><a href="#/pesquisa-perdidos">Ver Pets Perdidos</a></li>
+                <li ng-if="usuario" ng-class="{ active: telaAtiva('/pesquisa-adocao')}"><a href="#/pesquisa-adocao">Ver Pets Para Adoção</a></li>
             </ul><!-- /.navbar-left -->
             
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{ active: telaAtiva('/mantem-dados-usuario')}"><a href="#/mantem-dados-usuario">Meus Dados</a></li>
-                <li><a href="#/login" ng-click="logout()">Log Out</a></li>
+                <li ng-if="!usuario" ng-class="{ active: telaAtiva('/faq')}"> <a href="#/faq">FAQ</a></li>
+                <li ng-if="!usuario"> <a href="#/login">Login</a></li>
+                <li ng-if="usuario" ng-class="{ active: telaAtiva('/mantem-dados-usuario')}"><a href="#/mantem-dados-usuario">Meus Dados</a></li>
+                <li ng-if="usuario"><a href="#/" ng-click="logout()">Log Out</a></li>
         	</ul><!-- /.navbar-right -->
         	</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
