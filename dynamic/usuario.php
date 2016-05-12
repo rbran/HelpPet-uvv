@@ -19,9 +19,9 @@ if($input == null or !(isset($input->retornaDados) or isset($input->atualizaDado
     exit;
 }
 
-$bancoDados = [['id' => 1, 'nome' => 'Usuario1', 'email' => 'usuario1@example.com', 'localizacao' => ['latitude' => -20.341164, 'logitude' => -40.313314]],
-               ['id' => 2, 'nome' => 'Usuario2', 'email' => 'usuario2@example.com', 'localizacao' => ['latitude' => -20.341164, 'logitude' => -40.313314]],
-               ['id' => 3, 'nome' => 'Usuario3', 'email' => 'admin@example.com', 'localizacao' => ['latitude' => -20.341164, 'logitude' => -40.313314]],
+$bancoDados = [['id' => 1, 'nome' => 'Usuario1', 'email' => 'usuario1@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
+               ['id' => 2, 'nome' => 'Usuario2', 'email' => 'usuario2@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
+               ['id' => 3, 'nome' => 'Usuario3', 'email' => 'admin@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
               ];
 
 $jsonReturn = array('resposta' => 'sucesso');

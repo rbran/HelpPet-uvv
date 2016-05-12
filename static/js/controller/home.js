@@ -1,5 +1,5 @@
 app.controller('HomeController', function($scope, $location, store, jwtHelper, petsService, petCadastroService)  {
-    if(!$scope.isLoged()){
+    if(!$scope.isLoged) {
         $location.path('login');
         return;
     }

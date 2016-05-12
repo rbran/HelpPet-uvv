@@ -3,13 +3,11 @@ var app = angular.module('helppet', ['ngRoute', 'angular-storage', 'angular-jwt'
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
          templateUrl: 'views/inicio.html',
-//         controller: 'HomeController'
     }).when('/home', {
          templateUrl: 'views/home.html',
          controller: 'HomeController'
     }).when('/faq', {
         templateUrl: 'views/faq.html',
-//        controller: 'CadastraPetController'
     }).when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginController'
@@ -45,19 +43,15 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
 })
 
 app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
-    $scope.usuario = null;
+    $scope.isLoged = false;
     $scope.dataMain = {especies: null};
-    
-    $scope.isLoged = function() {
-        return $scope.usuario != null;
-    };
     
     $scope.telaAtiva = function (viewLocation) { 
         return viewLocation === $location.path();
     };
     
     $scope.logout = function() {
-        $scope.usuario = null;
+        $scope.isLoged = false;
         store.remove('jwt');
         $location.path('/');
     }
@@ -66,7 +60,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
         var resposta = LoginService.login(usuario.login, usuario.senha);
             resposta.then(function(data) {
             if(data.resposta == "sucesso"){
-                $scope.usuario = usuario;
+                $scope.isLoged = true;
                 store.set('jwt', data.jwt);
                 $location.path('/home');
             }else{
@@ -77,14 +71,14 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     
     var jwt = store.get('jwt');
     if(store.get('jwt') == null){
-        $scope.usuario = null;
+        $scope.isLoged = false;
         $location.path('/');
     }else if(jwtHelper.isTokenExpired(jwt)) {
-        $scope.usuario = null;
+        $scope.isLoged = false;
         store.remove('jwt');
         $location.path('/login');
     }else{
-        $scope.usuario = jwt.data;
+        $scope.isLoged = true;
     }
     
     especieService.getEspecies().then(function(data) {

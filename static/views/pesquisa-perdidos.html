@@ -7,7 +7,7 @@
   <div class="panel-heading">{{dataPesquisaPerdidos.petDetalhe.nome}}</div>
   <div class="panel-body">
     <p>{{dataPesquisaPerdidos.petDetalhe.perdido.descricao}}</p>
-    <div ng-map zoom="11" center="[{{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.latitude}}, {{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.longitude}}]">
+    <div ng-map center="[{{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.latitude}}, {{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.longitude}}]">
         <marker position="[{{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.latitude}}, {{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.longitude}}]" centered="true"></marker>
     </div>
   </div>
