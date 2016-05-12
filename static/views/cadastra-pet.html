@@ -1,5 +1,4 @@
 <style>
-
     body{background: url("/multimidia/fundo.png"); }
 </style>
 
@@ -18,6 +17,15 @@
       </select>
     </div>
   </div>
+  
+  <!-- Campo para Foto -->
+  <div class="form-group">
+    <label for="foto" class="col-sm-2 control-label">Foto:</label>
+    <div class="col-sm-5">
+      <input type="file" class="form-control" id="foto" placeholder="Foto do pet" ng-model="dataCadastraPet.pet.nome">
+    </div>
+  </div>
+  <!-- Fim Campo para foto -->
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <a href="#/home">
