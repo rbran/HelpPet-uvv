@@ -19,14 +19,12 @@
             <td>{{pet.nome}}</td>
             <td>{{pet.especieNome}}</td>
             <td>
-                <a href="#/cadastra-adocao?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-primary" ng-class="{disabled: pet.adocao}">
-                    Adoção
-                </a>
+                <button ng-if="!pet.adocao" ng-click="cadastraPetAdocao($index)" class="btn btn-primary">Adoção</button>
+                <button ng-if="pet.adocao" ng-click="removerAdocao($index)" class="btn btn-success">Remover da Adoção</button>
             </td>
             <td>
-                <a href="#/cadastra-perdido?id={{pet.id}}" ng-click="cadastraPet($index)" class="btn btn-danger" ng-class="{disabled: pet.perdido}">
-                    Perdido!
-                </a>
+                <button ng-if="!pet.perdido" ng-click="cadastraPetPerdido($index)" class="btn btn-danger">Perdido!</button>
+                <button ng-if="pet.perdido" ng-click="removerPerdido($index)" class="btn btn-success">Encontrado</button>
             </td>
             <td>
                 <button class="btn btn-danger"  ng-click="deletaPet($index)">

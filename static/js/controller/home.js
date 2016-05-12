@@ -6,13 +6,28 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, p
     
     $scope.dataHome = {};
     
-    $scope.cadastraPet = function(petIndex) {
-        petCadastroService.set($scope.dataHome.pets[petIndex]);
+    $scope.cadastraPetAdocao = function(index) {
+        petCadastroService.set($scope.dataHome.pets[index]);
+        $location.path('/cadastra-adocao').search({id: $scope.dataHome.pets[index].id});
+    };
+    $scope.cadastraPetPerdido = function(index) {
+        petCadastroService.set($scope.dataHome.pets[index]);
+        $location.path('/cadastra-perdido').search({id: $scope.dataHome.pets[index].id});
     };
     
     $scope.deletaPet = function(index) {
         $scope.dataHome.pets.splice(index, 1);
         petsService.deletaPet($scope.dataHome.pets[index].id);
+    };
+    
+    $scope.removerAdocao = function(index) {
+        $scope.dataHome.pets[index].adocao = null;
+        petsService.atualizaPet($scope.dataHome.pets[index]);
+    };
+    
+    $scope.removerPerdido = function(index) {
+        $scope.dataHome.pets[index].perdido = null;
+        petsService.atualizaPet($scope.dataHome.pets[index]);
     };
     
     var jwt = jwtHelper.decodeToken(store.get('jwt'));
