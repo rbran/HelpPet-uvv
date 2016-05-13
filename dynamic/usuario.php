@@ -7,6 +7,7 @@ atualizaDados: recebe dados do usuario (nome, email,senha, localizacao)
 
 use \Firebase\JWT\JWT;
 require_once("vendor/autoload.php");
+require_once("connect_sqlite.php");
 require_once("config.php");
 require_once("verifica_usuario.php");
 
@@ -18,11 +19,11 @@ if($input == null or !(isset($input->retornaDados) or isset($input->atualizaDado
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro
     exit;
 }
-
+/*
 $bancoDados = [['id' => 1, 'nome' => 'Usuario1', 'email' => 'usuario1@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
                ['id' => 2, 'nome' => 'Usuario2', 'email' => 'usuario2@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
                ['id' => 3, 'nome' => 'Usuario3', 'email' => 'admin@example.com', 'localizacao' => ['latitude' => -20.341164, 'longitude' => -40.313314]],
-              ];
+              ];*/
 
 $jsonReturn = array('resposta' => 'sucesso');
 
@@ -30,11 +31,21 @@ if(isset($input->retornaDados)) {
     $id = $token->data->id;
     
     $usuario = null;
-    foreach($bancoDados as $registro) 
-        if($registro['id'] == $id){
-            $usuario = $registro;
-            break;
-        }
+
+    $sql = 'SELECT * FROM `Usuario` WHERE `id` = :id';
+    $stmt = $bancoDados->prepare($sql);
+    $stmt->bindValue(':id', $id, SQLITE3_INTEGER);
+
+    $resultado = $stmt->execute();
+    
+    if($resultado != null and $linha = $resultado->fetchArray(SQLITE3_ASSOC)){
+        unset($linha['senha']);
+        $localizacao = $linha['localizacao'];
+        list($latitude, $longitude) = sscanf($localizacao, "%f,%f");
+        $linha['localizacao'] = ['latitude' => $latitude, 'longitude' => $longitude];
+        $usuario = $linha;
+    }
+    
     if($usuario == null){
         echo json_encode(['resposta' => 'erro', 'mensagem' => 'Usuario não encontrado']); //envia resposta de erro
         exit;
