@@ -54,7 +54,50 @@ if(isset($input->retornaDados)) {
 }
 
 if(isset($input->atualizaDados)) {
-    //TODO com o SQL
+    $parameter = [];
+    if(!isset($input->atualizaDados->id)){
+        echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida, ID Usuario não encontrado']); //envia resposta de erro
+        exit;
+    }
+    if(isset($input->atualizaDados->nome)){
+         $parameter[] = '`nome` = :nome';
+    }
+    if(isset($input->atualizaDados->email)){
+         $parameter[] = '`email` = :email';
+    }
+    if(isset($input->atualizaDados->senha)){
+         $parameter[] = '`senha` = :senha';
+    }
+    if(isset($input->atualizaDados->localizacao)){
+         $parameter[] = '`localizacao` = :localizacao';
+    }
+         
+    $sql = 'UPDATE `Usuario` SET ' . implode(',', $parameter) . ' WHERE `id` = :id';
+    $stmt = $bancoDados->prepare($sql);
+    
+    $stmt->bindValue(':id', $input->atualizaDados->id, SQLITE3_INTEGER);
+    if(isset($input->atualizaDados->nome)){
+        $stmt->bindValue(':nome', $input->atualizaDados->nome, SQLITE3_TEXT);
+    }
+    if(isset($input->atualizaDados->email)){
+        $stmt->bindValue(':email', $input->atualizaDados->email, SQLITE3_TEXT);
+    }
+    if(isset($input->atualizaDados->senha)){
+        $stmt->bindValue(':senha', $input->atualizaDados->senha, SQLITE3_TEXT);
+    }
+    if(isset($input->atualizaDados->localizacao)){
+        if(!isset($input->atualizaDados->localizacao->latitude) or !isset($input->atualizaDados->localizacao->longitude)){
+            echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida, Dados invalidos']); //envia resposta de erro
+            exit;
+        }
+        $localizacao = ($input->atualizaDados->localizacao->latitude) . ',' . ($input->atualizaDados->localizacao->longitude);
+        $stmt->bindValue(':localizacao', $localizacao, SQLITE3_TEXT);
+    }
+    
+    if(!$stmt->execute()){
+        echo json_encode(['resposta' => 'erro', 'mensagem' => 'Erro no Banco de Dados']); //envia resposta de erro
+        exit;
+    }
 }
 
 echo json_encode($jsonReturn);
