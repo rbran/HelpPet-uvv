@@ -1,4 +1,4 @@
-
+PRAGMA foreign_keys = ON;
 -- -----------------------------------------------------
 -- Table `Usuario`
 -- -----------------------------------------------------
@@ -30,6 +30,9 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 -- Exemplo
 -- INSERT INTO `Usuario` (`nome`,`email`,`senha`,`localizacao`) VALUES ('usuario1', 'usuario1@example.com', 'senha1', '-20.341164,-40.313314');
 
+-- Constants
+INSERT INTO `Usuario` (`nome`,`email`,`senha`,`localizacao`) VALUES ('usuario1', 'usuario1@gmail.com', 'senha1', '-20.341164,-40.313314');
+
 -- -----------------------------------------------------
 -- Table `Animal`
 -- -----------------------------------------------------
@@ -57,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `Perdido` (
   `animal_id` INTEGER NOT NULL,
   `ultimaLocalizacao` CHAR(45) NULL,
   `observacao` CHAR(512) NULL,
+  PRIMARY KEY (`animal_id`),
   FOREIGN KEY(`animal_id`) REFERENCES `Animal`(`id`) ON DELETE CASCADE
 );
 
@@ -71,6 +75,7 @@ DROP TABLE IF EXISTS `Adocao` ;
 CREATE TABLE IF NOT EXISTS `Adocao` (
   `animal_id` INTEGER NOT NULL,
   `observacao` CHAR(512) NULL,
+  PRIMARY KEY (`animal_id`),
   FOREIGN KEY(`animal_id`) REFERENCES `Animal`(`id`) ON DELETE CASCADE
 );
 

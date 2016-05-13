@@ -1,5 +1,5 @@
 app.controller('CadastraPerdidoController', function($scope, $location, $routeParams, NgMap, petsService, petCadastroService)  {
-    $scope.dataCadastraPerdido = {pet: {perdido: {}}};
+    $scope.dataCadastraPerdido = {pet: petCadastroService.get()};
     $scope.map = null;
     
     NgMap.getMap().then(function(map) {
@@ -16,13 +16,12 @@ app.controller('CadastraPerdidoController', function($scope, $location, $routePa
             }
         });
     }
-    $scope.dataCadastraPerdido.pet.perdido = {};
     
     $scope.cadastraPerdido = function() {
         $scope.dataCadastraPerdido.pet.perdido.localizacao = {latitude: $scope.map.markers[0].position.lat(), longitude: $scope.map.markers[0].position.lng()};
         petsService.atualizaPet($scope.dataCadastraPerdido.pet).then(function(data) {
             if(data.resposta == "sucesso") {
-                $location.path('/home');
+                $location.url('/home');
             }else{
                 alert("Erro ao receber dados do servidor");
             }

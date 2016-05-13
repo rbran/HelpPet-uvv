@@ -6,7 +6,7 @@
 <div class="panel panel-default" ng-if="dataPesquisaPerdidos.petDetalhe">
   <div class="panel-heading">{{dataPesquisaPerdidos.petDetalhe.nome}}</div>
   <div class="panel-body">
-    <p>{{dataPesquisaPerdidos.petDetalhe.perdido.descricao}}</p>
+    <p>{{dataPesquisaPerdidos.petDetalhe.perdido.observacao}}</p>
     <div ng-map center="[{{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.latitude}}, {{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.longitude}}]">
         <marker position="[{{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.latitude}}, {{dataPesquisaPerdidos.petDetalhe.perdido.localizacao.longitude}}]" centered="true"></marker>
     </div>

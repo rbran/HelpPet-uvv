@@ -17,6 +17,6 @@ app.controller('MantemDadosUsuarioController', function($scope, $location, NgMap
     $scope.atualizaDadosUsuario = function() {
         $scope.dataMantemDadosUsuario.dados.localizacao = {latitude: $scope.map.markers[0].position.lat(), longitude: $scope.map.markers[0].position.lng()};
         usuarioService.atualizaDados($scope.dataMantemDadosUsuario.dados);
-        $location.path('/home');
+        $location.url('/home');
     };
 });

@@ -1,6 +1,6 @@
 app.controller('HomeController', function($scope, $location, store, jwtHelper, petsService, petCadastroService)  {
     if(!$scope.isLoged) {
-        $location.path('login');
+        $location.url('/login');
         return;
     }
     
@@ -16,8 +16,9 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, p
     };
     
     $scope.deletaPet = function(index) {
+        var deletadoId = $scope.dataHome.pets[index].id;
         $scope.dataHome.pets.splice(index, 1);
-        petsService.deletaPet($scope.dataHome.pets[index].id);
+        petsService.deletaPet(deletadoId);
     };
     
     $scope.removerAdocao = function(index) {

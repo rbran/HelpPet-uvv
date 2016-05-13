@@ -8,3 +8,4 @@ if(!$bancoDados){
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Erro no banco de dados: ' . $bancoDados->lastErrorMsg()]); //envia resposta de erro
     exit;
 }
+$bancoDados->exec('PRAGMA foreign_keys = ON');
