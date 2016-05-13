@@ -23,12 +23,12 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `nome` CHAR(90) NOT NULL,
   `email` CHAR(90) NULL,
   `senha` CHAR(90) NOT NULL,
-  `localização` CHAR(45) NULL,
+  `localizacao` CHAR(45) NULL,
   PRIMARY KEY (`id`)
 );
 
 -- Exemplo
--- INSERT INTO `Usuario` (`nome`,`email`,`senha`,`localização`) VALUES ('usuario1', 'usuario1@example.com', 'senha1', '-20.341164,-40.313314');
+-- INSERT INTO `Usuario` (`nome`,`email`,`senha`,`localizacao`) VALUES ('usuario1', 'usuario1@example.com', 'senha1', '-20.341164,-40.313314');
 
 -- -----------------------------------------------------
 -- Table `Animal`
