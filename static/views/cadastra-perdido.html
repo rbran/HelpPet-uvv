@@ -13,7 +13,7 @@
     <div class="form-group">
         <label for="inputNome" class="col-sm-2 control-label">Espécie:</label>
         <div class="col-sm-5">
-          {{dataCadastraPerdido.pet.especie}}
+          {{resolveEspeciesNome(dataCadastraPerdido.pet.especie_id, dataMain.especies)}}
         </div>
     </div>
     
