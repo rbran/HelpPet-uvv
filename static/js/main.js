@@ -81,6 +81,8 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
         $scope.isLoged = true;
     }
     
+    $scope.resolveEspeciesNome = especieService.resolveEspeciesNome;
+    
     especieService.getEspecies().then(function(data) {
         if(data.resposta == "sucesso") {
             $scope.dataMain.especies = data.consulta;

@@ -17,7 +17,7 @@
     <tbody>
         <tr ng-repeat="pet in dataHome.pets">
             <td>{{pet.nome}}</td>
-            <td>{{pet.especieNome}}</td>
+            <td>{{resolveEspeciesNome(pet.especie_id, dataMain.especies)}}</td>
             <td>
                 <button ng-if="!pet.adocao" ng-click="cadastraPetAdocao($index)" class="btn btn-primary">Adoção</button>
                 <button ng-if="pet.adocao" ng-click="removerAdocao($index)" class="btn btn-success">Remover da Adoção</button>

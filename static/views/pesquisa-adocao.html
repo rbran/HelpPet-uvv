@@ -21,7 +21,7 @@
     <tbody>
         <tr ng-repeat="pet in dataPesquisaAdocao.pets">
             <td>{{pet.nome}}</td>
-            <td>{{pet.especieNome}}</td>
+            <td>{{resolveEspeciesNome(pet.especie_id, dataMain.especies)}}</td>
             <td>
                 <button type="button" class="btn btn-primary" ng-click="mostraDetalhe($index)">Ver detalhes</button>
             </td>

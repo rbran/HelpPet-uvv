@@ -12,11 +12,12 @@ app.factory('especieService', function($http) {
     };
 
     var resolveEspeciesNome = function(idEspecie, especies) {
-        for (var i = 0; i < especies.length; i++) {
-            if (especies[i].id == idEspecie) {
-                return especies[i];
+        if(especies != null)
+            for (var i = 0; i < especies.length; i++) {
+                if (especies[i].id == idEspecie) {
+                    return especies[i].nome;
+                }
             }
-        }
         return null;
     };
 
