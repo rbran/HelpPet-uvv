@@ -7,9 +7,11 @@ app.controller('PesquisaPerdidosController', function($scope, $location, petsSer
         $scope.dataPesquisaPerdidos.petDetalhe = $scope.dataPesquisaPerdidos.pets[index];
     }
     
+    $scope.dataMain.loading = true;
     petsService.getPetsPerdidos().then(function(data) {
         if(data.resposta == "sucesso") {
             $scope.dataPesquisaPerdidos.pets = data.consultarPerdido;
+            $scope.dataMain.loading = false;
         }else{
             alert("Erro ao receber dados do servidor");
         }

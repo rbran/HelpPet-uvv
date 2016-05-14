@@ -44,7 +44,7 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
 
 app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
     $scope.isLoged = false;
-    $scope.dataMain = {especies: null};
+    $scope.dataMain = {especies: null, loading: false};
     
     $scope.telaAtiva = function (viewLocation) { 
         return viewLocation === $location.path();
@@ -57,14 +57,17 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     }
 
     $scope.login = function(usuario) {
+        $scope.dataMain.loading = true;
         var resposta = LoginService.login(usuario.login, usuario.senha);
             resposta.then(function(data) {
             if(data.resposta == "sucesso"){
                 $scope.isLoged = true;
                 store.set('jwt', data.jwt);
                 $location.path('/home');
+                $scope.dataMain.loading = false;
             }else{
-                alert("Erro no login");
+                $scope.dataMain.loading = false;
+                alert("Login Invalido");
             }
         });
     };

@@ -39,6 +39,22 @@
     <title>HelpPet</title>
 </head>
 <body ng-app="helppet" ng-controller="MainController">
+    <style>
+        #loading {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(192, 192, 192, 0.5);
+            background-image: url("../multimidia/spinner.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+    <div ng-show="dataMain.loading" id="loading"></div>
     <div ng-include src="'views/includes/barra-superior.html'"></div>
     <div class="content">
         <div ng-view></div>
