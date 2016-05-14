@@ -16,6 +16,8 @@ app.controller('CadastraAdocaoController', function($scope, $location, $routePar
     
     $scope.cadastraAdocao = function() {
         $scope.dataMain.loading = true;
+        if($scope.dataCadastraAdocao.pet.adocao == null)
+            $scope.dataCadastraAdocao.pet.adocao = {observacao: ""};
         petsService.atualizaPet($scope.dataCadastraAdocao.pet).then(function(data) {
             if(data.resposta == "sucesso") {
                 $location.url('/home');

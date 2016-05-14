@@ -23,6 +23,8 @@ app.controller('CadastraPerdidoController', function($scope, $location, $routePa
     
     $scope.cadastraPerdido = function() {
         $scope.dataMain.loading = true;
+        if($scope.dataCadastraPerdido.pet.perdido == null)
+            $scope.dataCadastraPerdido.pet.perdido = {}
         $scope.dataCadastraPerdido.pet.perdido.localizacao = {latitude: $scope.map.markers[0].position.lat(), longitude: $scope.map.markers[0].position.lng()};
         petsService.atualizaPet($scope.dataCadastraPerdido.pet).then(function(data) {
             if(data.resposta == "sucesso") {
