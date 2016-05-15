@@ -218,30 +218,22 @@ if(isset($input->consultar)) {
 }
 
 if(isset($input->consultarPerdido)) {
-    $sql = 'SELECT `id`,'.
-                '`nome`,'.
-                '`especie_id`,'.
-                '`usuario_id`,'.
+    $sql = 'SELECT `Animal`.`id`,'.
+                '`Animal`.`nome`,'.
+                '`Animal`.`especie_id`,'.
+                '`Animal`.`usuario_id`,'.
+                '`Perdido`.`ultimaLocalizacao`,'.
                 '`Perdido`.`animal_id` AS `perdido_id`,'.
-                '`Adocao`.`animal_id` AS `adocao_id`,'.
-                '`ultimaLocalizacao`,`Perdido`.`animal_id` AS `perdido_id`,'.
-                '`Perdido`.`observacao` AS `observacao_perdido`,'.
-                '`Adocao`.`observacao` AS `observacao_adocao`'.
+                '`Perdido`.`observacao` AS `observacao_perdido`, '.
+                '`Usuario`.`email` AS `email_dono`, '.
+                '`Usuario`.`nome` AS `nome_dono` '.
             'FROM `Animal` '.
                 'INNER JOIN `Perdido` ON `Perdido`.`animal_id` = `Animal`.`id` '.
-                'LEFT JOIN `Adocao` ON `Adocao`.`animal_id` = `Animal`.`id`';
+                'LEFT JOIN `Usuario` ON `Usuario`.`id` = `Animal`.`usuario_id`';
     $resultado = $bancoDados->query($sql);
     
     $jsonReturn['consultarPerdido'] = [];
     while ($linha = $resultado->fetchArray(SQLITE3_ASSOC)) {
-        if($linha['adocao_id'] != null){
-            $linha['adocao'] = ['observacao' => $linha['observacao_adocao']];
-        }else{
-            $linha['adocao'] = null;
-        }
-        unset($linha['adocao_id']);
-        unset($linha['observacao_adocao']);
-        
         if($linha['perdido_id'] != null){
             list($latitude, $longitude) = sscanf($linha['ultimaLocalizacao'], "%f,%f");
             $linha['perdido'] = ['observacao' => $linha['observacao_perdido'], 'localizacao' => ['latitude' => $latitude, 'longitude' => $longitude]];
@@ -256,18 +248,17 @@ if(isset($input->consultarPerdido)) {
 }
 
 if(isset($input->consultarAdocao)) {
-    $sql = 'SELECT `id`,'.
-                '`nome`,'.
-                '`especie_id`,'.
-                '`usuario_id`,'.
-                '`Perdido`.`animal_id` AS `perdido_id`,'.
+    $sql = 'SELECT `Animal`.`id`,'.
+                '`Animal`.`nome`,'.
+                '`Animal`.`especie_id`,'.
+                '`Animal`.`usuario_id`,'.
                 '`Adocao`.`animal_id` AS `adocao_id`,'.
-                '`ultimaLocalizacao`,`Perdido`.`animal_id` AS `perdido_id`,'.
-                '`Perdido`.`observacao` AS `observacao_perdido`,'.
-                '`Adocao`.`observacao` AS `observacao_adocao`'.
+                '`Adocao`.`observacao` AS `observacao_adocao`,'.
+                '`Usuario`.`email` AS `email_dono`,'.
+                '`Usuario`.`nome` AS `nome_dono` '.
             'FROM `Animal` '.
-                'LEFT JOIN `Perdido` ON `Perdido`.`animal_id` = `Animal`.`id` '.
-                'INNER JOIN `Adocao` ON `Adocao`.`animal_id` = `Animal`.`id`';
+                'INNER JOIN `Adocao` ON `Adocao`.`animal_id` = `Animal`.`id` '.
+                'LEFT JOIN `Usuario` ON `Usuario`.`id` = `Animal`.`usuario_id`';
     $resultado = $bancoDados->query($sql);
     
     $jsonReturn['consultarAdocao'] = [];
@@ -280,15 +271,6 @@ if(isset($input->consultarAdocao)) {
         unset($linha['adocao_id']);
         unset($linha['observacao_adocao']);
         
-        if($linha['perdido_id'] != null){
-            list($latitude, $longitude) = sscanf($linha['ultimaLocalizacao'], "%f,%f");
-            $linha['perdido'] = ['observacao' => $linha['observacao_perdido'], 'localizacao' => ['latitude' => $latitude, 'longitude' => $longitude]];
-        }else{
-            $linha['perdido'] = null;
-        }
-        unset($linha['perdido_id']);
-        unset($linha['observacao_perdido']);
-        unset($linha['ultimaLocalizacao']);
         $jsonReturn['consultarAdocao'][] = $linha;
     }
 }
