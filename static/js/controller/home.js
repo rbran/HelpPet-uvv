@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $location, store, jwtHelper, petsService, petCadastroService)  {
+app.controller('HomeController', function($scope, $location, store, petsService, petCadastroService)  {
     if(!$scope.isLoged) {
         $location.url('/login');
         return;
@@ -54,11 +54,7 @@ app.controller('HomeController', function($scope, $location, store, jwtHelper, p
         });
     };
     
-    var jwt = jwtHelper.decodeToken(store.get('jwt'));
-    
-    $scope.dataHome.usuario = jwt.data.usuario;
-    
-    var respostaPets = petsService.getPetsPorDono(jwt.data.id);
+    var respostaPets = petsService.getPetsPorDono($scope.dataMain.usuario.id);
     
     $scope.dataMain.loading = true;
     respostaPets.then(function(data) {

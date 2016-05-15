@@ -11,6 +11,8 @@
     <!-- BootStrap -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    
     <!-- AngularJS -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
@@ -39,21 +41,6 @@
     <title>HelpPet</title>
 </head>
 <body ng-app="helppet" ng-controller="MainController">
-    <style>
-        #loading {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(192, 192, 192, 0.5);
-            background-image: url("../multimidia/spinner.gif");
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
     <div ng-show="dataMain.loading" id="loading"></div>
     <div ng-include src="'views/includes/barra-superior.html'"></div>
     <div class="content">

@@ -1,0 +1,101 @@
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("../../multimidia/spinner.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.banner {
+    position: static;
+    clear: both;
+}
+
+img.banner {
+    max-width: 100%;
+    margin: 0;
+    margin-top: 0;
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    left: 0;
+    clear: left;
+}
+
+#login-box {
+    width: 550px;
+    height: 370px;
+    margin: 140px auto 0px;
+    border-radius: 5px;
+}
+
+#login-box-interno {
+    background-color: #FFFFFF;
+    width: 450px;
+    height: 290px;
+    position: absolute;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    overflow: hidden;
+}
+
+#login-box-label {
+    height: 45px;
+    text-align: center;
+    font: bold 14px/45px sans-serif;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.form-control {
+    margin: 20px;
+    height: 40px;
+}
+
+.form-control {
+    width: 375px;
+    height: 40px;
+    font: normal 13px sans-serif;
+    color: #aeaeae;
+    outline: none;
+}
+
+.btn-primário {
+    width: 375px;
+    margin: 20px;
+    height: 40px;
+    background-color: #00BFFF;
+}
+
+.logo {
+    left: 33%;
+    top: 2%;
+    position: absolute;
+}
+
+.logo1 {
+    float: left;
+    margin-top: 3px;
+    margin-left: 15px;
+    position: absolute;
+}
+
+.divlogo {
+    position: absolute;
+}
+
+.divmenu {
+    position: relative;
+}
+
+body {
+    background: url("/multimidia/fundo.png");
+}

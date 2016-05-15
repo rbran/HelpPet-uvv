@@ -44,7 +44,7 @@ app.config(function Config($httpProvider, jwtInterceptorProvider) {
 
 app.controller("MainController", function($scope, $location, store, jwtHelper, LoginService, especieService) {
     $scope.isLoged = false;
-    $scope.dataMain = {especies: null, loading: false};
+    $scope.dataMain = {especies: null, loading: false, usuario: {}};
     
     $scope.telaAtiva = function (viewLocation) { 
         return viewLocation === $location.path();
@@ -53,6 +53,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     $scope.logout = function() {
         $scope.isLoged = false;
         store.remove('jwt');
+        $scope.dataMain.usuario = {};
         $location.path('/');
     }
 
@@ -63,6 +64,7 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
             if(data.resposta == "sucesso"){
                 $scope.isLoged = true;
                 store.set('jwt', data.jwt);
+                $scope.dataMain.usuario = jwtHelper.decodeToken(data.jwt).data;
                 $location.path('/home');
                 $scope.dataMain.loading = false;
             }else{
@@ -75,14 +77,19 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     var jwt = store.get('jwt');
     if(store.get('jwt') == null){
         $scope.isLoged = false;
+        $scope.dataMain.usuario = {};
         $location.path('/');
     }else if(jwtHelper.isTokenExpired(jwt)) {
         $scope.isLoged = false;
+        $scope.dataMain.usuario = {};
         store.remove('jwt');
         $location.path('/login');
     }else{
+        $scope.dataMain.usuario = jwtHelper.decodeToken(jwt).data;
         $scope.isLoged = true;
     }
+    
+    
     
     $scope.resolveEspeciesNome = especieService.resolveEspeciesNome;
     
