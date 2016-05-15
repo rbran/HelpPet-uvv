@@ -10,7 +10,7 @@ require_once("connect_sqlite.php");
 require_once("config.php");
 //require_once("verifica_usuario.php"); //usuarios não logados podem receber a lista de espécies
 
-header('Content-type: application/json');
+header('Content-type: application/json; charset=utf-8');
 
 $sql = 'SELECT * FROM `Especie`';
 $resultado = $bancoDados->query($sql);

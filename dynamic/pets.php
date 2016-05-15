@@ -18,7 +18,7 @@ require_once("connect_sqlite.php");
 include("config.php");
 include("verifica_usuario.php");
 
-header('Content-type: application/json');
+header('Content-type: application/json; charset=utf-8');
 
 /*
 $bancoDados = [['id' => 1, 'idDono' => 1, 'nome' => 'pet1', 'especie' => 1, 'especieNome' => 'cachorro', 'perdido' => null, 'adocao' => null],
@@ -34,7 +34,7 @@ $bancoDados = [['id' => 1, 'idDono' => 1, 'nome' => 'pet1', 'especie' => 1, 'esp
                ['id' => 11, 'idDono' => 2, 'nome' => 'pet11', 'especie' => 2, 'especieNome' => 'gato', 'perdido' => null, 'adocao' => ['descricao' => 'descrição1234123']]
               ];*/
 
-$input = @json_decode(utf8_encode(file_get_contents("php://input")));
+$input = @json_decode(file_get_contents("php://input"));
 
 if($input == null) {
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro

@@ -11,9 +11,9 @@ require_once("connect_sqlite.php");
 require_once("config.php");
 require_once("verifica_usuario.php");
 
-header('Content-type: application/json');
+header('Content-type: application/json; charset=utf-8');
 
-$input = @json_decode(utf8_encode(file_get_contents("php://input")));
+$input = @json_decode(file_get_contents("php://input"));
 
 if($input == null or !(isset($input->retornaDados) or isset($input->atualizaDados))) {
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro

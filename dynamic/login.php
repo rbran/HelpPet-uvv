@@ -14,7 +14,7 @@ require_once("vendor/autoload.php");
 require_once("connect_sqlite.php");
 require_once("config.php");
 
-header('Content-type: application/json');
+header('Content-type: application/json; charset=utf-8');
 
 $horaAtual = time();
 $token = [
@@ -26,7 +26,7 @@ $token = [
     'data' => null                                   // Data to be signed
 ];
 
-$input = @json_decode(utf8_encode(file_get_contents("php://input"))); // converto o input em json; o "@" remove a mensagem de erro (caso existir)
+$input = @json_decode(file_get_contents("php://input")); // converto o input em json; o "@" remove a mensagem de erro (caso existir)
 
 if($input == null or !isset($input->login) or !isset($input->senha)){
     echo json_encode(['resposta' => 'erro', 'mensagem' => 'Requisição invalida']); //envia resposta de erro
