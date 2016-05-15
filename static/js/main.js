@@ -78,12 +78,14 @@ app.controller("MainController", function($scope, $location, store, jwtHelper, L
     if(store.get('jwt') == null){
         $scope.isLoged = false;
         $scope.dataMain.usuario = {};
-        $location.path('/');
+        if($location.path() != '/login' && $location.path() != '/faq')
+            $location.url('/login');
     }else if(jwtHelper.isTokenExpired(jwt)) {
         $scope.isLoged = false;
         $scope.dataMain.usuario = {};
         store.remove('jwt');
-        $location.path('/login');
+        if($location.path() != '/' && $location.path() != '/faq')
+            $location.url('/login');
     }else{
         $scope.dataMain.usuario = jwtHelper.decodeToken(jwt).data;
         $scope.isLoged = true;
